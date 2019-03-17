@@ -26,11 +26,12 @@ code: [dataImg](/pm_hourly/dataImg.py)
 ## wordsReview
 
 <p align="center">
-	<img src="/wordsReview/img/Ui.jpg" alt="Sample"  width="285" height="270">
+	<img src="/wordsReview/Ui.jpg" alt="Sample"  width="285" height="270">
 	<p align="center">
 		<em>ui</em>
 	</p>
 </p>
+
 
 
 
