@@ -1,0 +1,233 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 127}, {308, 239}}",
+        "class" : "TextView",
+        "attributes" : {
+          "uuid" : "4C446810-AF89-4519-A1CC-8B11544276E4",
+          "font_size" : 30,
+          "corner_radius" : 0,
+          "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "frame" : "{{60, 140}, {200, 200}}",
+          "border_color" : "RGBA(0.766667,1.000000,0.766667,1.000000)",
+          "editable" : false,
+          "border_width" : 2,
+          "alignment" : "left",
+          "autocorrection_type" : "no",
+          "text_color" : "RGBA(0.283019,0.283019,0.283019,1.000000)",
+          "font_name" : "<System>",
+          "spellchecking_type" : "no",
+          "class" : "TextView",
+          "name" : "text",
+          "flex" : "WHLRTB"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{5.6666666666666661, 430.66666666666663}, {144.66666666666666, 43}}",
+        "class" : "Button",
+        "attributes" : {
+          "flex" : "WHLRTB",
+          "action" : "ActForget",
+          "image_name" : "iob:close_24",
+          "frame" : "{{120, 224}, {80, 32}}",
+          "title" : "FOGET",
+          "uuid" : "FB49A86B-7EDA-4FB4-BDF8-D1EABD4B84C4",
+          "background_color" : "RGBA(1.000000,0.466667,0.466667,1.000000)",
+          "class" : "Button",
+          "name" : "BtnForget",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{168.66666666666666, 430.33333333333331}, {144.99999999999997, 43.333333333333314}}",
+        "class" : "Button",
+        "attributes" : {
+          "flex" : "WHLRTB",
+          "action" : "ActRemember",
+          "image_name" : "iob:checkmark_24",
+          "frame" : "{{120, 224}, {80, 32}}",
+          "title" : "REMEMBER",
+          "uuid" : "86597EB4-C4E7-46B0-BA91-C14065E119B4",
+          "background_color" : "RGBA(0.266667,1.000000,0.266667,1.000000)",
+          "class" : "Button",
+          "name" : "BtnRemember",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 22}, {155, 46}}",
+        "class" : "Label",
+        "attributes" : {
+          "uuid" : "A26F5E20-2F7B-49A0-A09A-A7E35BC76DB7",
+          "font_size" : 30,
+          "corner_radius" : 0,
+          "background_color" : "RGBA(0.857571,1.000000,0.827586,1.000000)",
+          "frame" : "{{195, 254}, {150, 32}}",
+          "border_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "border_width" : 0,
+          "alignment" : "left",
+          "text" : "Label",
+          "font_name" : "<System>",
+          "class" : "Label",
+          "name" : "word",
+          "flex" : "WHLRTB"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6.0000000000000284, 76}, {308, 43.333333333333343}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "21902A16-4E43-42AD-A4FF-1D6A6C2EF152",
+          "image_name" : "iob:ios7_trash_24",
+          "font_size" : 26,
+          "corner_radius" : 0,
+          "background_color" : "RGBA(0.891304,1.000000,0.891304,1.000000)",
+          "frame" : "{{344, 496}, {80, 32}}",
+          "border_color" : "RGBA(0.304348,1.000000,0.304348,1.000000)",
+          "border_width" : 2,
+          "title" : "EASY",
+          "action" : "ActEasy",
+          "alpha" : 1,
+          "class" : "Button",
+          "name" : "BtnEasy",
+          "flex" : "WHLRTB"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{5.6666666666666661, 2.6666666666666665}, {308.33333333333331, 15.999999999999998}}",
+        "class" : "ImageView",
+        "attributes" : {
+          "flex" : "WHLRTB",
+          "frame" : "{{334, 462}, {100, 100}}",
+          "tint_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "class" : "ImageView",
+          "background_color" : "RGBA(1.000000,0.966667,0.966667,1.000000)",
+          "uuid" : "3B743E0A-3FB1-4FE3-ABAB-EA848A2A00AD",
+          "name" : "iv"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 374}, {308, 49}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "0CF6F022-0E6C-4F8D-8F99-B64371869E19",
+          "image_name" : "iob:document_text_32",
+          "flex" : "WHLRTB",
+          "corner_radius" : 0,
+          "background_color" : "RGBA(0.793103,0.919040,1.000000,1.000000)",
+          "frame" : "{{120, 224}, {80, 32}}",
+          "border_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "border_width" : 0,
+          "title" : "SAVE",
+          "action" : "ActSave",
+          "class" : "Button",
+          "name" : "BtnSave",
+          "font_size" : 20
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{167, 22}, {45, 46}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "record1",
+          "text_color" : "RGBA(0.000000,0.856209,0.074453,1.000000)",
+          "flex" : "WHLRTB",
+          "frame" : "{{85, 224}, {150, 32}}",
+          "uuid" : "52E5FB15-A7BC-493D-B928-1682DF2E195A",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "background_color" : "RGBA(0.931034,1.000000,0.991004,1.000000)",
+          "font_size" : 20,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{218, 22}, {45, 46}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_name" : "<System>",
+          "text_color" : "RGBA(0.000000,0.082126,0.944444,1.000000)",
+          "flex" : "WHLRTB",
+          "frame" : "{{85, 224}, {150, 32}}",
+          "uuid" : "52E5FB15-A7BC-493D-B928-1682DF2E195A",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "background_color" : "RGBA(0.931034,1.000000,0.991004,1.000000)",
+          "name" : "record2",
+          "font_size" : 20
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{269, 22}, {45, 46}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_name" : "<System>",
+          "flex" : "WHLRTB",
+          "frame" : "{{85, 224}, {150, 32}}",
+          "uuid" : "52E5FB15-A7BC-493D-B928-1682DF2E195A",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "background_color" : "RGBA(0.931034,1.000000,0.991004,1.000000)",
+          "name" : "record3",
+          "font_size" : 20
+        },
+        "selected" : true
+      }
+    ],
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "custom_class" : "",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : ""
+    },
+    "selected" : false
+  }
+]
