@@ -1,6 +1,9 @@
 #!python3
 import ui
 import random
+import dialogs
+from PIL import Image
+import io
 
 NEW_WORD = 0
 REVIEW_WORD = 80
@@ -23,14 +26,22 @@ class Env:
 		if ',' in data[1]:
 			studying_t = data[1].split(',')
 			studying_t = [int(i) for i in studying_t]
-			studying_t.extend([i + max([max(studying_t),max(self.get)]) + 1 for i in range(NEW_WORD)])
+			try:
+				newWordsNum = int(dialogs.input_alert('新词数', '正在学习: '+str(len(studying_t))))
+				if newWordsNum>WORD_ALL-len(studying_t)-REMEMBER_COUNT[0]:
+					newWordsNum = WORD_ALL-len(studying_t)-REMEMBER_COUNT[0]
+			except:
+				newWordsNum = NEW_WORD
+			studying_t.extend([i + max([max(studying_t),max(self.get)]) + 1 for i in range(newWordsNum)])
 		else:
 			studying_t = []
-			studying_t.extend([i+max(self.get)+1 for i in range(NEW_WORD)])
+			newWordsNum = NEW_WORD
+			studying_t.extend([i+max(self.get)+1 for i in range(newWordsNum)])
+		self.new = newWordsNum
 		self.writeStudying = studying_t.copy()
 
-		if len(self.writeStudying) >= REVIEW_WORD + NEW_WORD:
-			self.studying = self.writeStudying[-REVIEW_WORD - NEW_WORD:]
+		if len(self.writeStudying) >= REVIEW_WORD + newWordsNum:
+			self.studying = self.writeStudying[-REVIEW_WORD - newWordsNum:]
 		else:
 			self.studying = self.writeStudying[:]
 		self.words_num = len(self.studying)
@@ -159,25 +170,30 @@ class Env:
 		get_t = [str(i) for i in set(self.get)]
 		f.write(",".join(get_t))
 		f.close()
-
+		
 
 class AppUi(ui.View):
 	
 	def __init__(self):
-		self.env = Env()
-		
 		self.v = ui.load_view('app')
 		self.v['BtnForget'].action = self.ActForget
 		self.v['BtnRemember'].action = self.ActRemember
 		self.v['BtnEasy'].action = self.ActEasy
 		self.v['BtnSave'].action = self.ActSave
 		
+		ip = Image.open('IMG_4025.JPG')
+		with io.BytesIO() as bIO:
+			ip.save(bIO, ip.format)
+			self.v['Img'].image = ui.Image.from_data(bIO.getvalue())
+		
+		self.v.present('sheet')
+		self.env = Env()
 		s, done = self.env.step('ok')
 		self.v['word'].text = s['word']
 		self.v['text'].text = s['word_info']
 		self.draw_record()
 		self.draw_topline()
-		self.v.present('sheet')
+		dialogs.hud_alert('新词数: '+str(self.env.new))
 		
 	def draw_record(self):
 		self.v['record1'].text = str(len(self.env.writeStudying))
