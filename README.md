@@ -23,7 +23,9 @@ code: [dataImg](/pm_hourly/dataImg.py)
 
 
 
-## wordsReview
+# wordsReview
+
+- N1、N2語彙突破
 
 <table>
     <tr>
