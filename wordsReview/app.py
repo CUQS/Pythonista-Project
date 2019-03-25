@@ -6,21 +6,29 @@ from PIL import Image
 import io
 
 NEW_WORD = 0
-REVIEW_WORD = 80
-WORD_ALL = 1049
 REMEMBER_COUNT = [0]
 
 class Env:
-	def __init__(self):
-		# words_data
-		f = open('words.txt', 'r', encoding='gb18030')
-		self.txt = f.readlines()
-		f.close()
+	def set(self, mode):
+		self.mode = mode
+		if mode == "words":
+			f = open('words.txt', 'r', encoding='gb18030')
+			self.txt = f.readlines()
+			self.word_all = len(self.txt)//5
+			f.close()
+		elif mode == "grammer":
+			f = open('grammer.txt', 'r', encoding='gb18030')
+			self.txt = f.readlines()
+			self.word_all = len(self.txt)//5
+			f.close()
 		# studying_record
-		f = open('data.txt', 'r')
+		if mode == "words":
+			f = open('data_words.txt', 'r')
+		elif mode == "grammer":
+			f = open('data_grammer.txt', 'r')
 		data = f.readlines()
 		f.close()
-
+		
 		self.get = [int(i) for i in data[3].split(',')]
 		REMEMBER_COUNT[0] = len(self.get)
 		if ',' in data[1]:
@@ -28,8 +36,8 @@ class Env:
 			studying_t = [int(i) for i in studying_t]
 			try:
 				newWordsNum = int(dialogs.input_alert('新词数', '正在学习: '+str(len(studying_t))))
-				if newWordsNum>WORD_ALL-len(studying_t)-REMEMBER_COUNT[0]:
-					newWordsNum = WORD_ALL-len(studying_t)-REMEMBER_COUNT[0]
+				if newWordsNum>self.word_all-len(studying_t)-REMEMBER_COUNT[0]:
+					newWordsNum = self.word_all-len(studying_t)-REMEMBER_COUNT[0]
 			except:
 				newWordsNum = NEW_WORD
 			studying_t.extend([i + max([max(studying_t),max(self.get)]) + 1 for i in range(newWordsNum)])
@@ -40,10 +48,7 @@ class Env:
 		self.new = newWordsNum
 		self.writeStudying = studying_t.copy()
 
-		if len(self.writeStudying) >= REVIEW_WORD + newWordsNum:
-			self.studying = self.writeStudying[-REVIEW_WORD - newWordsNum:]
-		else:
-			self.studying = self.writeStudying[:]
+		self.studying = studying_t.copy()
 		self.words_num = len(self.studying)
 	
 		# section
@@ -51,6 +56,7 @@ class Env:
 		self.s_review = []
 		self.sectFinish = True
 		self.word_now = [self.studying[-1]]
+		print(self.word_now)
 	
 		# flag
 		self.easy_flag = False
@@ -162,7 +168,10 @@ class Env:
 		self.get.append(self.writeStudying.pop(list_index))
 	
 	def save(self):
-		f = open('data.txt', 'w')
+		if self.mode == "words":
+			f = open('data_words.txt', 'w', encoding='gb18030')
+		elif self.mode == "grammer":
+			f = open('data_grammer.txt', 'w', encoding='gb18030')
 		f.write("studying\n")
 		writeStudying_t = [str(i) for i in set(self.writeStudying)]
 		f.write(",".join(writeStudying_t))
@@ -188,17 +197,21 @@ class AppUi(ui.View):
 		
 		self.v.present('sheet')
 		self.env = Env()
+		self.env.set("words")
+		self.reset()
+		
+	def reset(self):
 		s, done = self.env.step('ok')
 		self.v['word'].text = s['word']
 		self.v['text'].text = s['word_info']
 		self.draw_record()
 		self.draw_topline()
 		dialogs.hud_alert('新词数: '+str(self.env.new))
-		
+	
 	def draw_record(self):
 		self.v['record1'].text = str(len(self.env.writeStudying))
 		self.v['record2'].text = str(len(self.env.get))
-		self.v['record3'].text = str(WORD_ALL)
+		self.v['record3'].text = str(self.env.word_all)
 		
 	def draw_topline(self):
 		n = self.env.words_num
@@ -277,10 +290,15 @@ class AppUi(ui.View):
 		if not done:
 			self.v['text'].text = s['word_info']
 		else:
-			self.v['BtnForget'].enabled = False
-			self.v['BtnRemember'].enabled = False
-			self.v['BtnEasy'].enabled = False
-			self.v['text'].text = "End\nRemember Num: " + str(len(self.env.get)-REMEMBER_COUNT[0])
+			if self.env.mode == "words":
+				dialogs.hud_alert('Remember words num: ' + str(len(self.env.get)-REMEMBER_COUNT[0]))
+				self.env.set("grammer")
+				self.reset()
+			elif self.env.mode == "grammer":
+				self.v['BtnForget'].enabled = False
+				self.v['BtnRemember'].enabled = False
+				self.v['BtnEasy'].enabled = False
+				self.v['text'].text = "End\nRemember Num: " + str(len(self.env.get)-REMEMBER_COUNT[0])
 			self.draw_record()
 		
 	def ActSave(self, sender):
